@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="utf-8">
+  <title>Students</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <title>Notes Manager</title>
+</head>
+<body>
+<div align="center" class="container-fluid">
+  <h1 class="display-4">Notes List</h1>
+  <a class="btn btn-primary" href="new" role="button">Create New Note</a>
+  <br/><br/>
+  <table class="table" id="notes">
+    <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Text</th>
+      <th scope="col">
+        <a href="#" onclick="sortByDate()">Date Updated (click for most recent notes)</a>
+      </th>
+      <th scope="col">Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="note : ${listNotes}"></tr>
+    <td scope="row" th:text="${note.name}">Name</td>-->
+    <td th:text="${note.text}">Text</td>
+    <td th:text="${note.date}">Date Created</td>
+    <td>
+      <a th:href="@{'/edit/' + ${note.id}}">Edit</a>
+      <a th:href="@{'/delete/' + ${note.id}}">Delete</a>
+    </td>
+    </tbody>
+  </table>
+</div>
+<script type="text/javascript" src="/js/helpers.js"></script>
+
+</body>
+</html>
